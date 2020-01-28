@@ -1,4 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-gb"><head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <meta name="description" content="Bores Security Consulting">
+  <meta name="author" content="James Bore">
+  <meta name="generator" content="Hugo 0.63.1" />
+  
+  <!-- Mobile Specific Metas -->
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search Results</title>
+  <link rel="icon" href="https://coffee-fueled.github.io/images/favicon.ico">
 
+  <!-- Twitter Bootstrs CSS -->
+  <link rel="stylesheet" href="https://coffee-fueled.github.io/plugins/bootstrap/bootstrap.min.css">
+  <!-- Ionicons Fonts Css -->
+  <link rel="stylesheet" href="https://coffee-fueled.github.io/plugins/ionicons/ionicons.min.css">
+  <!-- animate css -->
+  <link rel="stylesheet" href="https://coffee-fueled.github.io/plugins/animate-css/animate.css">
+  <!-- Hero area slider css-->
+  <link rel="stylesheet" href="https://coffee-fueled.github.io/plugins/slider/slider.css">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="https://coffee-fueled.github.io/plugins/slick/slick.css">
+  <!-- Fancybox -->
+  <link rel="stylesheet" href="https://coffee-fueled.github.io/plugins/facncybox/jquery.fancybox.css">
+  <!-- hover -->
+  <link rel="stylesheet" href="https://coffee-fueled.github.io/plugins/hover/hover-min.css">
+  <!-- template main css file -->
+  
+  <link rel="stylesheet" href="https://coffee-fueled.github.io/css/style.min.css" integrity="" media="screen">
+</head><body><section class="top-bar animated-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="https://coffee-fueled.github.io/">
+                        <img src="https://coffee-fueled.github.io/images/logo.png" alt="logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+                        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navigation">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                    href="https://coffee-fueled.github.io/">Home</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://coffee-fueled.github.io/blog">Blog</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://coffee-fueled.github.io/resources">Resources</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://coffee-fueled.github.io/about">About</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://coffee-fueled.github.io/contact">Contact</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://coffee-fueled.github.io/search">Search</a>
+                            </li>
+                            
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Global Page Section Start -->
+<section class="global-page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    <h2>Search Results</h2>
+                    <ol class="breadcrumb list-inline text-center">
+                        <li class="list-inline-item">
+                            <a href="https://coffee-fueled.github.io/">
+                                <i class="ion-ios-home"></i>
+                                Home &nbsp; &nbsp;/
+                            </a>
+                        </li>
+                        <li class="active list-inline-item">Search Results</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Global Page Section End -->
+
+<!-- Company Description Section Start -->
+
+<html lang="en-gb">
+  <body>
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column">
+      <div class="my-auto" >
+        <form action="https://coffee-fueled.github.io/search">
+          <input id="search-query" name="s"/>
+        </form>
+        <div id="search-results">
+          <h3>Results</h3>
+        </div>
+      </div>
+    </section>
+    
+    <script id="search-result-template" type="text/x-js-template">
+      <div id="summary-${key}">
+        <h4><a href="${link}">${title}</a></h4>
+        <p>${snippet}</p>
+        ${ isset tags }<p>Tags: ${tags}</p>${ end }
+        ${ isset categories }<p>Categories: ${categories}</p>${ end }
+      </div>
+    </script>
+  </body>
+</html>
 <!-- Footer Section Start -->
 <footer id="footer">
     <div class="container">
