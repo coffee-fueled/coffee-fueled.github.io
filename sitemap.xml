@@ -8,6 +8,16 @@
   </url>
   
   <url>
+    <loc>https://coffee-fueled.github.io/tags/incident-response/</loc>
+    <lastmod>2020-01-27T10:54:54+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://coffee-fueled.github.io/tags/phishing/</loc>
+    <lastmod>2020-01-27T10:54:54+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://coffee-fueled.github.io/resources/phishing_scenario/</loc>
     <lastmod>2020-01-27T10:54:54+00:00</lastmod>
   </url>
@@ -18,23 +28,38 @@
   </url>
   
   <url>
-    <loc>https://coffee-fueled.github.io/blog/</loc>
-    <lastmod>2018-07-08T12:22:40+06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coffee-fueled.github.io/blog/installation/</loc>
-    <lastmod>2018-07-08T12:22:40+06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coffee-fueled.github.io/tags/install/</loc>
-    <lastmod>2018-07-08T12:22:40+06:00</lastmod>
+    <loc>https://coffee-fueled.github.io/tags/scenario/</loc>
+    <lastmod>2020-01-27T10:54:54+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://coffee-fueled.github.io/tags/</loc>
-    <lastmod>2018-07-08T12:22:40+06:00</lastmod>
+    <lastmod>2020-01-27T10:54:54+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://coffee-fueled.github.io/blog/</loc>
+    <lastmod>2020-01-15T12:22:40+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://coffee-fueled.github.io/tags/data-protection/</loc>
+    <lastmod>2020-01-15T12:22:40+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://coffee-fueled.github.io/blog/doorstep_dispensaree/</loc>
+    <lastmod>2020-01-15T12:22:40+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://coffee-fueled.github.io/tags/gdpr-fine/</loc>
+    <lastmod>2020-01-15T12:22:40+06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://coffee-fueled.github.io/tags/ico/</loc>
+    <lastmod>2020-01-15T12:22:40+06:00</lastmod>
   </url>
   
   <url>

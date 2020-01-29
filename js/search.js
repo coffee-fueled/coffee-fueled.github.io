@@ -3,7 +3,7 @@ var fuseOptions = {
   shouldSort: true,
   includeMatches: true,
   threshold: 0.0,
-  tokenize:true,
+  tokenize: true,
   location: 0,
   distance: 100,
   maxPatternLength: 32,
@@ -16,7 +16,6 @@ var fuseOptions = {
   ]
 };
 
-
 var searchQuery = param("s");
 if(searchQuery){
   $("#search-query").val(searchQuery);
@@ -24,8 +23,6 @@ if(searchQuery){
 }else {
   $('#search-results').append("<p>Please enter a word or phrase above</p>");
 }
-
-
 
 function executeSearch(searchQuery){
   $.getJSON( "/index.json", function( data ) {
