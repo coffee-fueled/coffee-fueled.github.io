@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   
-  <meta name="description" content="Incident response testing scenario with timeline and injects for a successful phishing attempt.">
+  <meta name="description" content="High level narrative of a theoretical attack for use in incident response tabletops.">
   <meta name="author" content="James Bore">
   <meta name="generator" content="Hugo 0.63.1" />
   
   <!-- Mobile Specific Metas -->
   <meta name="format-detection" content="telephone=no">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Phishing Scenario</title>
+  <title>Attack Scenario: Phishing to Ransom</title>
   <link rel="icon" href="https://coffee-fueled.github.io/images/favicon.ico">
 
   <!-- Twitter Bootstrs CSS -->
@@ -85,7 +85,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="block">
-                    <h2>Phishing Scenario</h2>
+                    <h2>Attack Scenario: Phishing to Ransom</h2>
                     <div class="portfolio-meta">
                         <span> Tags:
                             incident response, scenario, phishing
@@ -109,21 +109,44 @@
                       <img class="img-fluid" src="https://coffee-fueled.github.io/images/resources/ElioReichert4.jpg" alt="work-single-image">
                       
                       
-                      &lt;<figcaption>Incident response testing scenario with timeline and injects for a successful phishing attempt.</figcaption>
+                      &lt;<figcaption>High level narrative of a theoretical attack for use in incident response tabletops.</figcaption>
                       
                     </figure>
                 </div>
                 
                 
                 <div class="work-single-content">
-                    <h3 id="consectur-in-bibendum">Consectur in Bibendum</h3>
-<p>Totam rem aperiam eaque ipsa quae illo inventore veritatis et quasi architebetea.vitae dicta sunt explicabo. nemo enim ipsam volup as tatem quia voluptassit aspernatur.aut odit aut fugit sed quia consequuntur magni dolores eo ratione voluptatem.sequi nesciunt neque porro quisquam est dolorem ipsum quia dolor amet consectetur adipisci velit. lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim est laborum. Sed ut perspiciatis unde omnis iste natus. error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-<blockquote>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-</blockquote>
-<p>Consequuntur magni dolores ratione voluptatem.sequi nesciunt neque porro quisquam est dolorem ipsum quia dolor sit amet consectetur adipisci velit.lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat.</p>
-<p>Reprehenderit in voluptate velit esse cillum dolore fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident. sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus.</p>
+                    <h3 id="overview">Overview</h3>
+<p>This is an attack scenario designed to support incident response and investigation tabletop exercises. Mitigations and detection possibilities are called out at each stage, so you can begin the exercise at any point in the narrative. Whether you then use the previous actions to provide additional context and highlight gaps in detection, or continue the scenario on depending on the actions and responses of participants, is entirely up to you.</p>
+<p>Any actions by the attacker can be automated in a genuine attack. While this scenario is generic and hypothetical, all of the techniques used are ones I have seen exploited to great effect in real life scenarios.</p>
+<p>You will find here:</p>
+<ul>
+<li>a timeline of the attack with actions by the attacker, employees, and indications of where the incident may be detected before the scenario completes</li>
+<li>a more detailed explanation of each stage on the timeline</li>
+<li>suggestions for injects at each point to provide more information to participants in response to the right investigative actions being taken</li>
+<li>the above as a downloadable PDF</li>
+</ul>
+<p>While this is designed to be as generic and applicable as possible, certain assumptions have to be made. This scenario assumes:</p>
+<ul>
+<li>users can remotely login to email</li>
+<li>a filesharing platform is available and stores sensitive data</li>
+<li>internal users are connected to an unsegregated internal network</li>
+</ul>
+<p>If some of these do not apply, or if you want to narrow the scenario, ignore those injects and activities. You may decide to start the scenario at the end, with the ransom demand being displayed to employees across the network, in which case the previous actions can help guide investigations. Otherwise, start at whichever point you realistically feel the alarm would be raised - the further events can be used to add pressure and identify holes in your incident response plan, if the right actions are not taken or the right questions not asked.</p>
+<p>Detection and prevention boxes on the timeline are not comprehensive or authoritative. The detailed summary of each stage below goes into more detail about possible detection/prevention mitigations, along with explanations of information might be available from any alerting solutions.</p>
+<h2 id="scenario">Scenario</h2>
+<h1 id="initial-incident">Initial incident</h1>
+<p>User receives a phishing e-mail. After clicking the link, they are asked to sign in to a page that appears to be the same as your collaboration platform.</p>
+<p><img src="images/resources/phishing-attack-flowchart.svg" alt="Phishing to ransomware scenario flowchart"></p>
+<p>Potential injects at this point:</p>
+<ul>
+<li>if user behaviour analytics are in use, overnight an out of character login by the user raises an alert</li>
+<li>if data loss prevention is available on the cloud platform, suspicious download activity is detected</li>
+<li>if malware detection is enabled on the cloud platform, a malicious file is detected on upload</li>
+<li>on their return to work the next day, the user discovers their credentials are not working</li>
+</ul>
+<p>Overnight the attacker makes use of the credentials to download sensitive data from the filesharing platform, download the company address book, read through the user&rsquo;s email history, and upload a malicious PDF file to the filesharing site.</p>
+<h1 id="heading"></h1>
 
                 </div>
                 
