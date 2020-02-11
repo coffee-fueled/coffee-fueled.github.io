@@ -116,7 +116,7 @@
                 
                 
                 <div class="work-single-content">
-                    <h3 id="overview">Overview</h3>
+                    <h2 id="overview">Overview</h2>
 <p>This is an attack scenario designed to support incident response and investigation tabletop exercises. Mitigations and detection possibilities are called out at each stage, so you can begin the exercise at any point in the narrative. Whether you then use the previous actions to provide additional context and highlight gaps in detection, or continue the scenario on depending on the actions and responses of participants, is entirely up to you.</p>
 <p>Any actions by the attacker can be automated in a genuine attack. While this scenario is generic and hypothetical, all of the techniques used are ones I have seen exploited to great effect in real life scenarios.</p>
 <p>You will find here:</p>
@@ -135,18 +135,32 @@
 <p>If some of these do not apply, or if you want to narrow the scenario, ignore those injects and activities. You may decide to start the scenario at the end, with the ransom demand being displayed to employees across the network, in which case the previous actions can help guide investigations. Otherwise, start at whichever point you realistically feel the alarm would be raised - the further events can be used to add pressure and identify holes in your incident response plan, if the right actions are not taken or the right questions not asked.</p>
 <p>Detection and prevention boxes on the timeline are not comprehensive or authoritative. The detailed summary of each stage below goes into more detail about possible detection/prevention mitigations, along with explanations of information might be available from any alerting solutions.</p>
 <h2 id="scenario">Scenario</h2>
-<h1 id="initial-incident">Initial incident</h1>
-<p>User receives a phishing e-mail. After clicking the link, they are asked to sign in to a page that appears to be the same as your collaboration platform.</p>
-<p><img src="images/resources/phishing-attack-flowchart.svg" alt="Phishing to ransomware scenario flowchart"></p>
-<p>Potential injects at this point:</p>
-<ul>
-<li>if user behaviour analytics are in use, overnight an out of character login by the user raises an alert</li>
-<li>if data loss prevention is available on the cloud platform, suspicious download activity is detected</li>
-<li>if malware detection is enabled on the cloud platform, a malicious file is detected on upload</li>
-<li>on their return to work the next day, the user discovers their credentials are not working</li>
-</ul>
-<p>Overnight the attacker makes use of the credentials to download sensitive data from the filesharing platform, download the company address book, read through the user&rsquo;s email history, and upload a malicious PDF file to the filesharing site.</p>
-<h1 id="heading"></h1>
+<p><img src="../images/resources/phishing-attack-flowchart.svg" alt="Phishing to ransomware scenario flowchart"></p>
+<h3 id="initial-phish">Initial phish</h3>
+<p>A user receives a phishing e-mail. After clicking the link, they are asked to sign in to a page that appears to be the same as your collaboration platform.</p>
+<p>Effective training, or certain anti-phishing technologies, may prevent this. Most of the effective anti-phishing technologies rely on up to date threat intelligence. If the attack is targeted and crafted, not sharing common attributes with ongoing mass attacks detected by these systems, then it is unlikely to be blocked. The same applies to detection systems.</p>
+<p><img src="../images/resources/paypal-phishing.png" alt="An example phishing email"></p>
+<p>If the attack is a first wave from a further mass attack, some anti-phishing systems will pick up that the e-mail was a phish after the fact even if not before. Once reported and determined to be a true positive, these systems can alert you to previously received messages and even retroactively pull them from mailboxes if they are unread. Of course, if it is a mass attack there may be a large number of affected users and many of the further steps in this narrative are likely to be automated and occur within seconds, or at most minutes.</p>
+<h3 id="attacker-gains-access">Attacker gains access</h3>
+<p>Armed with valid user credentials the attacker now logs into the webmail service, or uses a mail client, to pull down the company address book and gather intelligence for further exploitation. A common indicator that this has happened, which can remain in place for days if an attack has gone unnoticed, is a forwarding rule set in the user&rsquo;s mailbox. At later stages this is something an incident response playbook for any sort of mailbox access breach should look for, and ideally a rule monitoring for any forwarding rules outside the company should be in place.</p>
+<p>With automated attacks, the forwarding rule and download of the organisation address book (and therefore organisation chart) will usually be set up within seconds of the breach. Even when later stages are manual this initial set of actions is often automated.</p>
+<p>Restricting remote access to only authorised endpoints is the most effective defense, however in the days of bring your own device (BYOD) this is rarely set up. Multi-factor authentication is another protection which can be effective, although SIMjacking and social engineering methods can work around these.</p>
+<p>Conditional access security, or user behaviour analytics, are another defense which can either prevent an attacker from gaining access or alert to them doing so. A suitable inject here would be an alert that a user is logging on outside of their regular working hours, or from a location it would be impossible for them to have travelled to in the time since their last logon. Quick action at this point in locking out the account and contacting the user can help mitigate the later stages of the scenario, but again in an automated attack the second wave of communications may already have gone out to internal and external contacts, so should be checked as part of the incident response plan.</p>
+<h3 id="attacker-accesses-fileshare">Attacker accesses fileshare</h3>
+<p>At this point the attacker has found links to your filesharing solution, whether integrated with your e-mail platform or independent. Either single sign on is implemented, or the user has reused their password for simplicity. They begin pulling down any content they can get hold of, especially anything that looks interesting, in preparation for the next stage.</p>
+<p>Many of the same defense methods as for webmail will work here, so I will gloss over those. One which comes into its own at this stage is data loss prevention technologies, if properly applied. Depending on the policies set these solutions may prevent users from downloading protectively marked data outside of your environment, or alert on any suspicious downloads. Here is where another inject could enter the scenario, with an alert that the user is downloading large numbers of sensitive documents.</p>
+<h3 id="attacker-uploads-a-malicious-fileshare">Attacker uploads a malicious fileshare</h3>
+<p>After finding a suitable file, a PDF or similar with some readily available vulnerabilities in common clients. They take the existing file, use an exploit kit to inject malicious code into it (or if especially enthusiastic, craft their own exploit into the file), and upload it as a new version.</p>
+<p>With the ease of obfuscating exploit code any signature based detection is going to be ineffective against a prepared attacker. The security team may be alerted to what is going on by an effective sandbox setup which quarantines any new files and executes them in a prepared environment to test for any unexpected behaviour. Again, this may be a good point to drop an inject into the scenario if it is a realistic point for detection to happen and the tooling is in place.</p>
+<h3 id="attacker-sends-out-impersonation-e-mails">Attacker sends out impersonation e-mails</h3>
+<p>Masquerading as the victim user, the attacker now sends out a number of e-mails asking people to check the file. At this point we are likely talking about a human rather than automated attack, which will either craft a new e-mail based on the user&rsquo;s history or reply to conversations to leverage the existing trust. While training can help here, it is much harder to train people to be cautious of known co-workers than external phishing attacks. The best hope is that one of your employees picks up something odd about the e-mail and reports it quickly, another chance to drop an inject into the room.</p>
+<h3 id="employees-execute-the-malware">Employees execute the malware</h3>
+<p>By this point most of the potential defenses have failed, or do not exist. Unless a good endpoint protection solution, whether using sandboxing or otherwise, captures the execution of the malicious payload and prevents compromise it is likely to succeed. Employees will hopefully notice something if the PDF crashes their PDF reader, but there is no guarantee they will know what to look for or will report it.</p>
+<h3 id="ransomware-agent-begins-spreading-across-network">Ransomware agent begins spreading across network</h3>
+<p>The attacker now has one or more compromised systems within your network. Depending on their level of sophistication the malware may immediately be used to start encrypting data and showing ransom screens. In this scenario, the attacker is willing to play a longer term game and instead allows the malware to quietly spread for a few days.</p>
+<p>With the right security controls in place unauthorised changes, or attempted changes, to critical systems may be flagged up and warn of what is going on. If this happens there are serious decisions to be made - can parts of the network be quarantined to protect others, what can be sacrificed, and so on. With the appropriate network segregation, or even micro-segmentation, in place the infection spread may be tightly limited. This is a good place for incident response planning, as it forces participants to consider what is and is not critical, and brings to light areas that may have been overlooked.</p>
+<h3 id="ransomware-is-executed">Ransomware is executed</h3>
+<p>One the ransomware has spread far enough for them, or a set time is reached, it is triggered and begins encrypting files on all compromised hosts.</p>
 
                 </div>
                 
